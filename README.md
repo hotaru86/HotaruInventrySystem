@@ -40,5 +40,6 @@ VCCに導入済みのパッケージ一覧が表示されるので、HotaruInven
 設定したオブジェクトのオンオフは、Expressionメニュー(Radialメニュー)から切り替えられます。
 ![MoveCheck](Website/Images/MoveCheck.png)
 
-
+## ライセンス
+[LICENSE](LICENSE.md)
 
