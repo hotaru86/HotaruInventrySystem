@@ -3,10 +3,7 @@
 ## 概要
 MA対応のアバター改変用ツールです。
 オブジェクトオンオフアニメーションを手軽に作成できます。
-[](
-↓商品ページを貼る
-boothでの配布ページは[こちら](https://hotaru86.booth.pm/)
-)
+boothでの配布ページは[こちら](https://hotaru86.booth.pm/items/5289934)
 
 ## VCCへの導入
 VCCをインストール済みなら、[https://hotaru86.github.io/VPM/](https://hotaru86.github.io/VPM/)にアクセスし、「Add to VCC」を押すことで、VCCのリストに追加できます。
