@@ -18,7 +18,7 @@ vpm add repo https://hotaru86.github.io/VPM/index.json
 
 ## プロジェクトへの導入
 本ツールを使用するには、Modular Avatarの導入が必須です。
-事前に、[https://modular-avatar.nadena.dev/ja](https://modular-avatar.nadena.dev/ja)から導入を済ませておいてください。
+事前に、[https://modular-avatar.nadena.dev/ja](https://modular-avatar.nadena.dev/ja)から、Modular AvatarをVCCに導入してください。
 
 本ツールを使用したいプロジェクトの「Manage Project」から、「Manager Package」に移動します。
 VCCに導入済みのパッケージ一覧が表示されるので、HotaruInventrySystemの右にある「+」ボタンを押すか、「Installed version」からバージョンを選び、プロジェクトにインポートしてください。
