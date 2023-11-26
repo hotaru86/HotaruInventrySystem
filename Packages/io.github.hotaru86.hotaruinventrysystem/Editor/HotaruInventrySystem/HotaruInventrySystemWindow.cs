@@ -359,15 +359,15 @@ namespace hotarunohikari.HotaruInventrySystem
 
         public static string GetRelativePathFromParent(Transform parent, Transform target)
         {
-            if(target == null || parent  == null) return "";
+            if (target == null || parent == null) return "";
             if (!target.IsChildOf(parent)) return "";
             string result = "";
-            while(target.name != parent.name)
+            while (target.name != parent.name)
             {
-                result += target.name;
+                result = target.name + "/" + result;
                 target = target.parent;
             }
-            return result;
+            return result.TrimEnd('/');
         }
         public static string GetTimeStamp()
         {
