@@ -24,6 +24,7 @@ namespace hotarunohikari.HotaruInventrySystem
             if(Selection.gameObjects.Length == 0)
             {
                 EditorUtility.DisplayDialog("HotaruInventrySystem", "オブジェクトを選択されていません。\nオブジェクトを選択した状態で、追加してください。", "OK");
+                HotaruInventrySystemWindow.OpenWindow();
                 return;
             }
 
@@ -40,6 +41,7 @@ namespace hotarunohikari.HotaruInventrySystem
                 if (HotaruInventrySystemWindow.IsContainGameObjectInGroup(obj))
                 {
                     EditorUtility.DisplayDialog("HotaruInventrySystem", "すでに登録済みのオブジェクトが選択されています。", "OK");
+                    HotaruInventrySystemWindow.OpenWindow();
                     return;
                 }
             }

@@ -62,7 +62,7 @@ namespace hotarunohikari.HotaruInventrySystem
         static string targetAvatarDisplayName = "導入対象アバター";
 
         [MenuItem("Tools/HotaruInventrySystem")]
-        private static void OpenWindow()
+        public static void OpenWindow()
         {
             HotaruInventrySystemWindow window = GetWindow<HotaruInventrySystemWindow>();
             window.titleContent = new GUIContent(appDisplayName);
@@ -118,6 +118,7 @@ namespace hotarunohikari.HotaruInventrySystem
             if (targetAvatar == null)
             {
                 EditorUtility.DisplayDialog(appDisplayName, $"先に{targetAvatarDisplayName}を選択してください。", "OK");
+                OpenWindow();
                 return;
             }
 
