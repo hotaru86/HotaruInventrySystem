@@ -30,10 +30,10 @@ VCCに導入済みのパッケージ一覧が表示されるので、HotaruInven
 2. 「HotaruInventrySystemに追加」を押します。複数選択も可能です。(複数オブジェクトをまとめてオンオフするアニメーションが生成されます。)
 ![SelectAndAdd](Website/Images/SelectAndAdd.png)
 
-3. 表示されたウィンドウ上で、グループ名と、デフォルトでオンにするかどうかを設定します。
+3. 表示されたウィンドウ上で、グループ名と、デフォルトでオンにするかどうかを設定し、「アニメーションを作成」ボタンを押します。
 <img src="Website/Images/SetGroupNameAndDefaultState.png" width="400">
 
-4. 「アニメーションを作成」ボタンを押し、アバターの子に「(生成日時)_HotaruInventrySystem」というオブジェクトが生成されていれば完了です！
+4. アバターの子に「(生成日時)_HotaruInventrySystem」というオブジェクトが生成されていれば完了です！
 作成したアニメーションを削除したいとき、再設定したいときは、この「(生成日時)_HotaruInventrySystem」オブジェクトを削除してください。
 ![Complete](Website/Images/Complete.png)
 
