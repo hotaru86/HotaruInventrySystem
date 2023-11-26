@@ -1,4 +1,10 @@
-﻿using System.Collections;
+/*
+Copyright (c) 2023 hotaru86
+Released under the MIT license
+https://opensource.org/licenses/mit-license.php
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
