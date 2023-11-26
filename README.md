@@ -28,6 +28,7 @@ VCCに導入済みのパッケージ一覧が表示されるので、HotaruInven
 ![SelectAndAdd](Website/Images/SelectAndAdd.png)
 
 3. 表示されたウィンドウ上で、グループ名と、デフォルトでオンにするかどうかを設定し、「アニメーションを作成」ボタンを押します。
+このウィンドウを見失ったときは、Unity画面上部の「Tools > HotaruInventrySystem」から、再度開けます。
 <img src="Website/Images/SetGroupNameAndDefaultState.png" width="400">
 
 4. アバターの子に「(生成日時)_HotaruInventrySystem」というオブジェクトが生成されていれば完了です！
