@@ -3,25 +3,18 @@ Copyright (c) 2023 hotaru86
 Released under the MIT license
 https://opensource.org/licenses/mit-license.php
 */
+#if UNITY_EDITOR
 
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace hotarunohikari.HotaruInventrySystem
 {
     using nadena.dev.modular_avatar.core;
     using System;
-    using System.Collections.Immutable;
     using System.IO;
-    using System.Linq;
-    using System.Runtime.CompilerServices;
     using UnityEditor;
     using UnityEditor.Animations;
-    using UnityEditor.Experimental.TerrainAPI;
-    using UnityEditor.PackageManager.UI;
     using UnityEngine;
-    using VRC.Core;
     using VRC.SDK3.Avatars.Components;
     using VRC.SDK3.Avatars.ScriptableObjects;
 
@@ -393,3 +386,4 @@ namespace hotarunohikari.HotaruInventrySystem
         }
     }
 }
+#endif

@@ -4,10 +4,7 @@ Released under the MIT license
 https://opensource.org/licenses/mit-license.php
 */
 
-using Newtonsoft.Json.Converters;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -50,3 +47,4 @@ namespace hotarunohikari.HotaruInventrySystem
         }
     }
 }
+#endif
