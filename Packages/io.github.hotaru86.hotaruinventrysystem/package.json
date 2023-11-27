@@ -1,7 +1,7 @@
 {
   "name": "io.github.hotaru86.hotaruinventrysystem",
   "displayName": "HotaruInventrySystem",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "MA\u5bfe\u5fdc\u306e\u30aa\u30f3\u30aa\u30d5\u30a2\u30cb\u30e1\u30fc\u30b7\u30e7\u30f3\u751f\u6210\u30c4\u30fc\u30eb",
   "gitDependencies": {},
   "vpmDependencies": {
