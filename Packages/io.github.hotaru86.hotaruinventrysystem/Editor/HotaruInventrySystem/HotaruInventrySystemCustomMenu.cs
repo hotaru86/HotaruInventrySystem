@@ -20,7 +20,7 @@ namespace hotarunohikari.HotaruInventrySystem
         {
             if(Selection.gameObjects.Length == 0)
             {
-                EditorUtility.DisplayDialog("HotaruInventrySystem", "オブジェクトを選択されていません。\nオブジェクトを選択した状態で、追加してください。", "OK");
+                EditorUtility.DisplayDialog("HotaruInventrySystem", "オブジェクトが選択されていません。\nオブジェクトを選択した状態で、追加してください。", "OK");
                 HotaruInventrySystemWindow.OpenWindow();
                 return;
             }
