@@ -243,8 +243,11 @@ namespace hotarunohikari.HotaruInventrySystem
                 // ステートの作成
                 AnimatorState onState = layer.stateMachine.AddState(group.groupName + "_ON");
                 onState.motion = CreateAnimationClip(group, true);
+                EditorUtility.SetDirty(onState);
+
                 AnimatorState offState = layer.stateMachine.AddState(group.groupName + "_OFF");
                 offState.motion = CreateAnimationClip(group, false);
+                EditorUtility.SetDirty(offState);
 
                 // トランジションの作成
                 AnimatorStateTransition onToOffTrans = onState.AddTransition(offState);
@@ -252,12 +255,18 @@ namespace hotarunohikari.HotaruInventrySystem
                 onToOffTrans.hasExitTime = false;
                 onToOffTrans.exitTime = 0;
                 onToOffTrans.duration = 0;
+                EditorUtility.SetDirty(onToOffTrans);
+
                 AnimatorStateTransition offToOnTrans = offState.AddTransition(onState);
                 offToOnTrans.AddCondition(AnimatorConditionMode.If, 0, onParameter.name);
                 offToOnTrans.hasExitTime = false;
                 offToOnTrans.exitTime = 0;
                 offToOnTrans.duration = 0;
+                EditorUtility.SetDirty(offToOnTrans);
             }
+
+            EditorUtility.SetDirty(controller);
+
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
@@ -278,6 +287,8 @@ namespace hotarunohikari.HotaruInventrySystem
                 subMenu = subExMenu,
                 subParameters = Array.Empty<VRCExpressionsMenu.Control.Parameter>()
             });
+
+
 
             for (int i = 0; i< objectGroups.Count; i++)
             {
@@ -303,6 +314,13 @@ namespace hotarunohikari.HotaruInventrySystem
 
             AssetDatabase.CreateAsset(rootExMenu, $"{timeStampedPath}/{lastTimeStamp}_rootExMenu.asset");
             AssetDatabase.CreateAsset(subExMenu, $"{timeStampedPath}/{lastTimeStamp}_subExMenu.asset");
+            
+            EditorUtility.SetDirty(rootExMenu);
+            EditorUtility.SetDirty(subExMenu);
+            
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+
 
             //MergeAnimatorの設定
             var MAMergeAnim = targetObj.AddComponent<ModularAvatarMergeAnimator>();
@@ -315,6 +333,8 @@ namespace hotarunohikari.HotaruInventrySystem
             var MAMenuInst = targetObj.AddComponent<ModularAvatarMenuInstaller>();
             MAMenuInst.menuToAppend = rootExMenu;
 
+            EditorUtility.SetDirty(MAMergeAnim);
+            EditorUtility.SetDirty(MAMenuInst);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
