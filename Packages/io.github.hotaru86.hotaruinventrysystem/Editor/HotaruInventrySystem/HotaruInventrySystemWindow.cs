@@ -227,6 +227,10 @@ namespace hotarunohikari.HotaruInventrySystem
                 };
                 controller.AddLayer(layer);
 
+                AssetDatabase.AddObjectToAsset(layer.stateMachine, controller);
+                EditorUtility.SetDirty(layer.stateMachine);
+
+
                 // パラメータの作成
                 AnimatorControllerParameter onParameter = new AnimatorControllerParameter
                 {
@@ -254,6 +258,7 @@ namespace hotarunohikari.HotaruInventrySystem
                 offToOnTrans.exitTime = 0;
                 offToOnTrans.duration = 0;
             }
+            AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
             //MAとExpressionMenuの設定
@@ -309,6 +314,9 @@ namespace hotarunohikari.HotaruInventrySystem
             //MenuInstallerの設定
             var MAMenuInst = targetObj.AddComponent<ModularAvatarMenuInstaller>();
             MAMenuInst.menuToAppend = rootExMenu;
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
 
         private AnimationClip CreateAnimationClip(GameObjectGroup group, bool state)
