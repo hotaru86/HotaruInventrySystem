@@ -47,5 +47,6 @@ VCCに導入済みのパッケージ一覧が表示されるので、HotaruInven
 - v1.0.5  バージョン3.4.1のSDK-Avatarsでしか動作しない問題を修正
 - v1.0.6  ツール内の誤字の修正
 - v1.0.7  Unity Editor再起動時などに、AnimatorControllerのデータが消える問題を修正
+- v1.0.8  Unity Editor再起動時などに、生成されたrootExMenu内のSubmenuAssetがNoneになる(参照が外れる)問題を修正
 ## ライセンス
 [LICENSE](LICENSE.md)
