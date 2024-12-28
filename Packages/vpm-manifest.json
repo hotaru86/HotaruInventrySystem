@@ -1,33 +1,69 @@
 {
   "dependencies": {
     "com.vrchat.avatars": {
-      "version": "3.4.1"
+      "version": "3.7.5"
     },
     "nadena.dev.modular-avatar": {
-      "version": "1.8.3"
+      "version": "1.11.1"
+    },
+    "jp.lilxyzw.liltoon": {
+      "version": "1.8.4"
+    },
+    "io.github.hotaru86.hotaruinventrysystem": {
+      "version": "1.0.8"
+    },
+    "vrchat.blackstartx.gesture-manager": {
+      "version": "3.9.3"
+    },
+    "net.narazaka.vrchat.avatar-menu-creater-for-ma": {
+      "version": "1.26.0"
     }
   },
   "locked": {
-    "com.vrchat.avatars": {
-      "version": "3.4.1",
-      "dependencies": {
-        "com.vrchat.base": "3.4.1"
-      }
-    },
     "com.vrchat.base": {
-      "version": "3.4.1",
+      "version": "3.7.5",
       "dependencies": {}
     },
-    "nadena.dev.modular-avatar": {
-      "version": "1.8.3",
+    "com.vrchat.avatars": {
+      "version": "3.7.5",
       "dependencies": {
-        "com.vrchat.avatars": ">=3.2.0",
-        "nadena.dev.ndmf": ">=1.2.5 <2.0.0-a"
+        "com.vrchat.base": "3.7.5"
+      }
+    },
+    "nadena.dev.modular-avatar": {
+      "version": "1.11.1",
+      "dependencies": {
+        "com.vrchat.avatars": ">=3.7.4",
+        "nadena.dev.ndmf": ">=1.6.0 <2.0.0-a"
       }
     },
     "nadena.dev.ndmf": {
-      "version": "1.2.5",
+      "version": "1.6.2",
       "dependencies": {}
+    },
+    "jp.lilxyzw.liltoon": {
+      "version": "1.8.5",
+      "dependencies": {}
+    },
+    "io.github.hotaru86.hotaruinventrysystem": {
+      "version": "1.0.8",
+      "dependencies": {
+        "com.vrchat.avatars": ">=3.4.1",
+        "nadena.dev.modular-avatar": ""
+      }
+    },
+    "vrchat.blackstartx.gesture-manager": {
+      "version": "3.9.3",
+      "dependencies": {
+        "com.vrchat.avatars": ">=3.5.2 <3.8.X"
+      }
+    },
+    "net.narazaka.vrchat.avatar-menu-creater-for-ma": {
+      "version": "1.26.0",
+      "dependencies": {
+        "com.vrchat.avatars": ">=3.0.9",
+        "nadena.dev.modular-avatar": ">=1.0.0 <2.0.0-a"
+      }
     }
   }
 }
