@@ -1,16 +1,16 @@
 {
     "name": "io.github.hotaru86.hotaruinventrysystem.Editor",
+    "rootNamespace": "",
     "references": [
         "VRC.SDK3A",
         "VRC.SDK3A.Editor",
         "VRC.SDKBase",
         "VRC.SDKBase.Editor",
-        "io.github.hotaru86.hotaruinventrysystem",
-        "nadena.dev.modular-avatar.core"
+        "nadena.dev.modular-avatar.core",
+        "nadena.dev.ndmf",
+        "io.github.hotaru86.hotaruinventrysystem.Component"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
