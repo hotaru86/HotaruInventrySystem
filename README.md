@@ -36,6 +36,10 @@ VCCに導入済みのパッケージ一覧が表示されるので、HotaruInven
 5. アバターの子に生成された「Hotaru Inventry System」のInspectorを開くか、Unity画面上部の「Tools > HotaruInventrySystem」を開いくことで、一度設定した内容を再度編集できます。
 ![EditAfterSetting](Website/Images/EditAfterSetting.png)
 
+## 注意事項
+- v2.0.0以降、アニメーションはアップロード(Playモード開始)のタイミングで生成されるようになっています。本ツールで生成したAnimationやAnimatorControllerを手動で編集したい場合、v1.0.8をご使用ください。
+- 生成されたアニメーションが、アップロード後に「Assets/HotaruInventrySystem/tmp」に残る既知の不具合があります。今後のアップデートで修正予定です。Playモードに入った際には、tmpフォルダ内のデータはすべて削除されますのでご注意ください。
+
 ## 更新情報
 - v1.0.0  リリース
 - v1.0.1  ライセンスを明記
