@@ -93,7 +93,7 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
                 {
                     name = GetParameterNameFromGroupName(group.groupName),
                     type = AnimatorControllerParameterType.Bool,
-                    defaultBool = false
+                    defaultBool = false,
                 };
                 controller.AddParameter(onParameter);
 
@@ -154,7 +154,7 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
                     type = VRCExpressionsMenu.Control.ControlType.Toggle,
                     parameter = new VRCExpressionsMenu.Control.Parameter() { name = GetParameterNameFromGroupName(group.groupName) },
                     value = 1.0f,
-                    subParameters = Array.Empty<VRCExpressionsMenu.Control.Parameter>()
+                    subParameters = Array.Empty<VRCExpressionsMenu.Control.Parameter>(),
                 });
 
                 MAParam.parameters.Add(new ParameterConfig()
@@ -163,7 +163,7 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
                     syncType = ParameterSyncType.Bool,
                     //èâä˙íl!
                     defaultValue = 0,
-                    saved = true,
+                    saved = group.isSaved,
                     internalParameter = true,
                 });
             }

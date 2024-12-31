@@ -19,6 +19,7 @@ namespace hotarunohikari.HotaruInventrySystem.Component
         public string groupName;
         public List<GameObject> objects;
         public List<bool> defaultState;
+        public bool isSaved = true;
 
         public void RemoveObjectAt(int index)
         {

@@ -85,7 +85,15 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
                 }
                 EditorGUILayout.EndHorizontal();
 
+                GUILayout.Space(3);
 
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Space(10);
+                GUILayout.Label("ƒ[ƒ‹ƒhˆÚ“®‚Éó‘Ô‚ğ•Û‘¶‚·‚é", new GUIStyle(GUI.skin.label));
+                group.isSaved = EditorGUILayout.Toggle("", group.isSaved);
+                EditorGUILayout.EndHorizontal();
+
+                GUILayout.Space(5);
 
                 //Œ©o‚µ
                 EditorGUILayout.BeginHorizontal();
