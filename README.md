@@ -27,16 +27,14 @@ VCCに導入済みのパッケージ一覧が表示されるので、HotaruInven
 2. 「HotaruInventrySystemに追加」を押します。複数選択も可能です。(複数オブジェクトをまとめてオンオフするアニメーションが生成されます。)
 ![SelectAndAdd](Website/Images/SelectAndAdd.png)
 
-3. 表示されたウィンドウ上で、グループ名と、デフォルトでオンにするかどうかを設定し、「アニメーションを作成」ボタンを押します。
-このウィンドウを見失ったときは、Unity画面上部の「Tools > HotaruInventrySystem」から、再度開けます。
+3. 表示されたウィンドウ上で、グループ名、ワールド移動時の保存設定、初期状態の表示設定を設定します。
 <img src="Website/Images/SetGroupNameAndDefaultState.png" width="400">
 
-4. アバターの子に「(生成日時)_HotaruInventrySystem」というオブジェクトが生成されていれば完了です！
-作成したアニメーションを削除したいとき、再設定したいときは、この「(生成日時)_HotaruInventrySystem」オブジェクトを削除してください。
-![Complete](Website/Images/Complete.png)
-
-設定したオブジェクトのオンオフは、Expressionメニュー(Radialメニュー)から切り替えられます。
+4. 上記の設定が完了した状態でアバターをアップロードすれば、Expressionメニュー(Radialメニュー)に設定が反映されます。
 ![MoveCheck](Website/Images/MoveCheck.png)
+
+5. アバターの子に生成された「Hotaru Inventry System」のInspectorを開くか、Unity画面上部の「Tools > HotaruInventrySystem」を開いくことで、一度設定した内容を再度編集できます。
+![EditAfterSetting](Website/Images/EditAfterSetting.png)
 
 ## 更新情報
 - v1.0.0  リリース
@@ -48,5 +46,7 @@ VCCに導入済みのパッケージ一覧が表示されるので、HotaruInven
 - v1.0.6  ツール内の誤字の修正
 - v1.0.7  Unity Editor再起動時などに、AnimatorControllerのデータが消える問題を修正
 - v1.0.8  Unity Editor再起動時などに、生成されたrootExMenu内のSubmenuAssetがNoneになる(参照が外れる)問題を修正
+- v2.0.0  アニメーションの生成をアップロード時に実行するように変更。グループ内の各オブジェクトについてオンオフ状態を個別に設定できるように変更。設定を後から編集できるように変更。
+- v2.0.1  オンオフ状態をワールド移動時に保存するかどうかを設定できるように変更
 ## ライセンス
 [LICENSE](LICENSE.md)
