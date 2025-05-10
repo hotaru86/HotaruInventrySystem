@@ -25,32 +25,70 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
 
         public static void DrawHISGUI(HotaruInventrySystem_Menu targetMenu)
         {
-            //Playƒ‚[ƒh‚È‚Ç‚ÉAvatar‚ªæ“¾‚Å‚«‚È‚­‚È‚Á‚½ê‡‚É‰½‚à‚µ‚È‚¢
+            GUILayout.BeginVertical();
+            GUILayout.Space(10);
+            //Playãƒ¢ãƒ¼ãƒ‰æ™‚ãªã©ã«AvatarãŒå–å¾—ã§ããªããªã£ãŸå ´åˆã«ä½•ã‚‚ã—ãªã„
             try
             {
-                targetMenu.targetAvatar = EditorGUILayout.ObjectField("‘ÎÛƒAƒoƒ^[", targetMenu.targetAvatar, typeof(VRCAvatarDescriptor), true) as VRCAvatarDescriptor;
+                targetMenu.targetAvatar = EditorGUILayout.ObjectField("å¯¾è±¡ã‚¢ãƒã‚¿ãƒ¼", targetMenu.targetAvatar, typeof(VRCAvatarDescriptor), true) as VRCAvatarDescriptor;
             }catch(System.Exception e)
             {
                 return;
             }
 
+            GUILayout.Space(10);
+            targetMenu.showMenuSettings = EditorGUILayout.Foldout(targetMenu.showMenuSettings, "ãƒ¡ãƒ‹ãƒ¥ãƒ¼å…¨ä½“è¨­å®š", true);
+            if (targetMenu.showMenuSettings)
+            {
+                GUILayout.Space(10);
+                using (new EditorGUILayout.VerticalScope())
+                {
+                    using (new EditorGUILayout.HorizontalScope())
+                    {
+                        EditorGUILayout.Space(10);
+                        float totalWidth = EditorGUIUtility.currentViewWidth;
+                        float iconWidth = 100;
+                        float labelWidth = totalWidth - iconWidth - 20;
+                        targetMenu.menuIcon = (Texture2D)EditorGUILayout.ObjectField(
+                            targetMenu.menuIcon,
+                            typeof(Texture2D),
+                            false,
+                            GUILayout.Width(iconWidth),
+                            GUILayout.Height(iconWidth)
+                        );
+                        using (new EditorGUILayout.VerticalScope())
+                        {
+                            GUILayout.Label("ãƒ¡ãƒ‹ãƒ¥ãƒ¼å", new GUIStyle(GUI.skin.label), GUILayout.Width(labelWidth));
+                            targetMenu.menuName = EditorGUILayout.TextField(
+                                "",
+                                targetMenu.menuName,
+                                GUILayout.Width(labelWidth - 10)
+                            );
+                        }
+                    }
+                }
+            }
+            GUILayout.Space(20);
+
             if (targetMenu.groups.Count == 0)
             {
-                GUILayout.BeginVertical(EditorStyles.helpBox);
-                EditorGUILayout.LabelField("ƒIƒuƒWƒFƒNƒgƒOƒ‹[ƒv‚ª‚ ‚è‚Ü‚¹‚ñB\nƒOƒ‹[ƒv‚Ì’Ç‰Á‚ÍAƒIƒuƒWƒFƒNƒg‚ğ(•¡”)‘I‘ğ‚µ‚Ä\n‰EƒNƒŠƒbƒN->HotaruInventrySystem‚É’Ç‰Á", new GUIStyle(GUI.skin.label) { wordWrap = true });
-                GUILayout.EndVertical();
+                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                {
+                    EditorGUILayout.LabelField("ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ãŒã‚ã‚Šã¾ã›ã‚“ã€‚\nã‚°ãƒ«ãƒ¼ãƒ—ã®è¿½åŠ ã¯ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’(è¤‡æ•°)é¸æŠã—ã¦\nå³ã‚¯ãƒªãƒƒã‚¯->HotaruInventrySystemã«è¿½åŠ ", new GUIStyle(GUI.skin.label) { wordWrap = true });
+                }
                 return;
             }
 
-            // ƒŠƒXƒg‚ÌŠe—v‘f‚ğ•\¦E•ÒW
+            // ãƒªã‚¹ãƒˆã®å„è¦ç´ ã‚’è¡¨ç¤ºãƒ»ç·¨é›†
             for (int i = 0; i < targetMenu.groups.Count; i++)
             {
-                EditorGUI.indentLevel++;
-                DrawGroup(targetMenu.groups[i]);
-                EditorGUI.indentLevel--;
+                using (new EditorGUI.IndentLevelScope())
+                {
+                    DrawGroup(targetMenu.groups[i]);
+                }
             }
 
-            // •ÏX‚ğ•Û‘¶
+            // å¤‰æ›´ã‚’ä¿å­˜
             if (GUI.changed)
             {
                 EditorUtility.SetDirty(targetMenu);
@@ -65,70 +103,78 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
                 float defaultLabelWidth = totalWidth * 0.15f;
                 float animatedLabelWidth = totalWidth * 0.15f;
 
-                GUIStyle centerStyle = new GUIStyle(GUI.skin.label); centerStyle.alignment = TextAnchor.MiddleCenter;
+                GUIStyle centerStyle = new GUIStyle(GUI.skin.label);
+                centerStyle.alignment = TextAnchor.MiddleCenter;
 
-
-                GUILayout.BeginVertical(EditorStyles.helpBox);
-                GUILayout.Space(10);
-                EditorGUILayout.BeginHorizontal();
-                GUILayout.Label("ƒOƒ‹[ƒv–¼", new GUIStyle(GUI.skin.label));
-                Vector2 labelSize = new GUIStyle(GUI.skin.label).CalcSize(new GUIContent("ƒOƒ‹[ƒv–¼"));
-
-                group.groupName = EditorGUILayout.TextField("", group.groupName, GUILayout.Width(totalWidth * 0.7f - labelSize.x));
-                GUILayout.Space(20);
-                // íœƒ{ƒ^ƒ“
-                if (GUILayout.Button("íœ", GUILayout.Width(50)))
+                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
                 {
-                    Undo.RecordObject(targetMenu, "Remove HISGroup");
-                    targetMenu.RemoveGroup(group);
-                    EditorUtility.SetDirty(targetMenu);
-                }
-                EditorGUILayout.EndHorizontal();
-
-                GUILayout.Space(3);
-
-                EditorGUILayout.BeginHorizontal();
-                GUILayout.Space(10);
-                GUILayout.Label("ƒ[ƒ‹ƒhˆÚ“®‚Éó‘Ô‚ğ•Û‘¶‚·‚é", new GUIStyle(GUI.skin.label));
-                group.isSaved = EditorGUILayout.Toggle("", group.isSaved);
-                EditorGUILayout.EndHorizontal();
-
-                GUILayout.Space(5);
-
-                //Œ©o‚µ
-                EditorGUILayout.BeginHorizontal();
-                GUILayout.Label("‘ÎÛƒIƒuƒWƒFƒNƒg", GUILayout.Width(objectFieldWidth));
-                GUILayout.Label("", centerStyle, GUILayout.Width(defaultStateToggleWidth));
-                GUILayout.Label("‰Šúó‘Ô‚Å", centerStyle, GUILayout.Width(defaultLabelWidth));
-                GUILayout.Label("ƒ{ƒ^ƒ“‚ğ‰Ÿ‚·‚Æ", centerStyle, GUILayout.Width(animatedLabelWidth));
-                EditorGUILayout.EndHorizontal();
-                for (int i = 0; i < group.objects.Count; i++)
-                {
-                    EditorGUILayout.BeginHorizontal();
-                    group.objects[i] = EditorGUILayout.ObjectField(
-                            group.objects[i],
-                            typeof(GameObject),
-                            true,
-                            GUILayout.Width(objectFieldWidth)
-                        ) as GameObject;
-                    group.defaultState[i] = EditorGUILayout.Toggle(
-                            "",
-                            group.defaultState[i],
-                            GUILayout.Width(defaultStateToggleWidth)
-                        );
-                    string defaultText = group.defaultState[i] ? "•\¦" : "”ñ•\¦";
-                    GUILayout.Label(defaultText, centerStyle, GUILayout.Width(defaultLabelWidth));
-                    string animatedText = !group.defaultState[i] ? "•\¦" : "”ñ•\¦";
-                    GUILayout.Label(animatedText, centerStyle, GUILayout.Width(animatedLabelWidth));
-                    EditorGUILayout.EndHorizontal();
-
                     GUILayout.Space(10);
+                    using (new EditorGUILayout.HorizontalScope())
+                    {
+                        GUILayout.Label("ã‚°ãƒ«ãƒ¼ãƒ—å", new GUIStyle(GUI.skin.label));
+                        Vector2 labelSize = new GUIStyle(GUI.skin.label).CalcSize(new GUIContent("ã‚°ãƒ«ãƒ¼ãƒ—å"));
+
+                        group.groupName = EditorGUILayout.TextField("", group.groupName, GUILayout.Width(totalWidth * 0.7f - labelSize.x));
+                        GUILayout.Space(20);
+                        // å‰Šé™¤ãƒœã‚¿ãƒ³
+                        if (GUILayout.Button("å‰Šé™¤", GUILayout.Width(50)))
+                        {
+                            Undo.RecordObject(targetMenu, "Remove HISGroup");
+                            targetMenu.RemoveGroup(group);
+                            EditorUtility.SetDirty(targetMenu);
+                        }
+                    }
+
+                    GUILayout.Space(3);
+
+                    using (new EditorGUILayout.HorizontalScope())
+                    {
+                        GUILayout.Space(10);
+                        GUILayout.Label("ãƒ¯ãƒ¼ãƒ«ãƒ‰ç§»å‹•æ™‚ã«çŠ¶æ…‹ã‚’ä¿å­˜ã™ã‚‹", new GUIStyle(GUI.skin.label));
+                        group.isSaved = EditorGUILayout.Toggle("", group.isSaved);
+                    }
+
+                    GUILayout.Space(5);
+
+                    //è¦‹å‡ºã—
+                    using (new EditorGUILayout.HorizontalScope())
+                    {
+                        GUILayout.Label("å¯¾è±¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ", GUILayout.Width(objectFieldWidth));
+                        GUILayout.Label("", centerStyle, GUILayout.Width(defaultStateToggleWidth));
+                        GUILayout.Label("åˆæœŸçŠ¶æ…‹ã§", centerStyle, GUILayout.Width(defaultLabelWidth));
+                        GUILayout.Label("ãƒœã‚¿ãƒ³ã‚’æŠ¼ã™ã¨", centerStyle, GUILayout.Width(animatedLabelWidth));
+                    }
+                    for (int i = 0; i < group.objects.Count; i++)
+                    {
+                    using (new EditorGUILayout.HorizontalScope())
+                    {
+                        group.objects[i] = EditorGUILayout.ObjectField(
+                                group.objects[i],
+                                typeof(GameObject),
+                                true,
+                                GUILayout.Width(objectFieldWidth)
+                            ) as GameObject;
+                        group.defaultState[i] = EditorGUILayout.Toggle(
+                                "",
+                                group.defaultState[i],
+                                GUILayout.Width(defaultStateToggleWidth)
+                            );
+                        string defaultText = group.defaultState[i] ? "è¡¨ç¤º" : "éè¡¨ç¤º";
+                        GUILayout.Label(defaultText, centerStyle, GUILayout.Width(defaultLabelWidth));
+                        string animatedText = !group.defaultState[i] ? "è¡¨ç¤º" : "éè¡¨ç¤º";
+                        GUILayout.Label(animatedText, centerStyle, GUILayout.Width(animatedLabelWidth));
+                    }
+
+                        GUILayout.Space(10);
+                    }
                 }
-                GUILayout.EndVertical();
             }
-            GUILayout.BeginVertical(EditorStyles.helpBox);
-            GUIStyle style = new GUIStyle(GUI.skin.label); style.wordWrap = true;
-            EditorGUILayout.LabelField("ƒOƒ‹[ƒv‚Ì’Ç‰Á‚ÍAƒIƒuƒWƒFƒNƒg‚ğ(•¡”)‘I‘ğ‚µ‚Ä\n‰EƒNƒŠƒbƒN->HotaruInventrySystem‚É’Ç‰Á", style);
+            using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+            {
+                GUIStyle style = new GUIStyle(GUI.skin.label); style.wordWrap = true;
+                EditorGUILayout.LabelField("ã‚°ãƒ«ãƒ¼ãƒ—ã®è¿½åŠ ã¯ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’(è¤‡æ•°)é¸æŠã—ã¦\nå³ã‚¯ãƒªãƒƒã‚¯->HotaruInventrySystemã«è¿½åŠ ", style);
+            }
+            
             GUILayout.EndVertical();
         }
     }

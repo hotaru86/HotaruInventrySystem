@@ -86,8 +86,18 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
             //既存Menuなければ作って返す
             GameObject newMenuObj = new GameObject() { name = "Hotaru Inventry System" };
             newMenuObj.transform.parent = avatar.transform;
-            newMenuObj.AddComponent<HotaruInventrySystem_Menu>();
-            return newMenuObj.GetComponent<HotaruInventrySystem_Menu>();
+            HotaruInventrySystem_Menu newMenu = newMenuObj.AddComponent<HotaruInventrySystem_Menu>();
+
+            //デフォルトアイコンを設定
+            string defaultIconPath = "Packages/io.github.hotaru86.hotaruinventrysystem/Resources/Tofu_icon128.png";
+            Texture2D defaultIcon = AssetDatabase.LoadAssetAtPath<Texture2D>(defaultIconPath);
+            if (defaultIcon != null)
+            {
+                newMenu.menuIcon = defaultIcon;
+            }else{
+                Debug.LogWarning($"Default icon not found at {defaultIconPath}. Please set a default icon in the script.");
+            }
+            return newMenu;
         }
     }
 }

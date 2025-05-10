@@ -49,10 +49,14 @@ namespace hotarunohikari.HotaruInventrySystem.Component
             }
             set
             {
-                //‰½‚©‚ª‘ã“ü‚³‚ê‚Ä‚àAí‚Ée‚ğtargetAvatar‚É•Û‚·‚é(Äæ“¾)
+                //ä½•ã‹ãŒä»£å…¥ã•ã‚Œã¦ã‚‚ã€å¸¸ã«è¦ªã‚’targetAvatarã«ä¿æŒã™ã‚‹(å†å–å¾—)
                 _targetAvatar = GetComponentInParent<VRCAvatarDescriptor>();
             }
         }
+
+        public Texture2D menuIcon;
+        public string menuName = "HotaruInventrySystem";
+        public bool showMenuSettings = false;
         
         public List<HISGroup> groups = new List<HISGroup>();
 
@@ -82,7 +86,7 @@ namespace hotarunohikari.HotaruInventrySystem.Component
         {
             List<int> indexToDelete = new List<int>();
 
-            //group“à‚ÉnullƒIƒuƒWƒFƒNƒg‚ª‚ ‚ê‚Îíœ
+            //groupå†…ã«nullã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã‚ã‚Œã°å‰Šé™¤
             foreach (HISGroup group in groups)
             {
                 if (group == null) continue;
@@ -99,7 +103,7 @@ namespace hotarunohikari.HotaruInventrySystem.Component
                 }
             }
 
-            //ƒIƒuƒWƒFƒNƒg‚Ì“ü‚Á‚Ä‚¢‚È‚¢ƒOƒ‹[ƒv‚ª‚ ‚ê‚Îíœ
+            //ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å…¥ã£ã¦ã„ãªã„ã‚°ãƒ«ãƒ¼ãƒ—ãŒã‚ã‚Œã°å‰Šé™¤
             indexToDelete = new List<int>();
             for(int i=0; i<groups.Count; i++)
             {
@@ -132,14 +136,14 @@ namespace hotarunohikari.HotaruInventrySystem.Component
                         uniqueStr = $"{str}_{nameCount[str]}";
                     } while (nameCount.ContainsKey(uniqueStr));
 
-                    //ƒ†ƒj[ƒN‚È–¼‘O‚Åã‘‚«
+                    //ãƒ¦ãƒ‹ãƒ¼ã‚¯ãªåå‰ã§ä¸Šæ›¸ã
                     groups[i].groupName = uniqueStr;
                     nameCount[uniqueStr] = 1;
                 }
             }
         }
 
-        //ƒRƒ“ƒ|[ƒlƒ“ƒgƒAƒ^ƒbƒ`‚ÉtargetAvatar‚ğİ’è
+        //ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚¢ã‚¿ãƒƒãƒæ™‚ã«targetAvatarã‚’è¨­å®š
         private void Reset()
         {
             targetAvatar = transform.GetComponentInParent<VRCAvatarDescriptor>();

@@ -46,7 +46,7 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
         static string timeStampedPath = "";
         private void SetupAnimationsToAvatar(HotaruInventrySystem_Menu targetMenu)
         {
-            //ƒAƒjƒ[ƒVƒ‡ƒ“•Û‘¶æ‚ÌƒtƒHƒ‹ƒ_‚ª‚È‚¯‚ê‚Îì¬
+            //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ä¿å­˜å…ˆã®ãƒ•ã‚©ãƒ«ãƒ€ãŒãªã‘ã‚Œã°ä½œæˆ
             if (!Directory.Exists(assetsPath))
                 Directory.CreateDirectory(assetsPath);
 
@@ -55,12 +55,12 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
             if (!Directory.Exists(timeStampedPath))
                 Directory.CreateDirectory(timeStampedPath);
             Debug.Log("HIS_dayo1");
-            // AnimatorController‚Ìì¬
+            // AnimatorControllerã®ä½œæˆ
             Debug.Log($"targetMenu:{targetMenu != null}");
             Debug.Log($"targetMenu.targetAvatar:{targetMenu.targetAvatar != null}");
             AnimatorController controller = AnimatorController.CreateAnimatorControllerAtPath($"{timeStampedPath}/{timeStamp}_{targetMenu.targetAvatar.name}.controller");
             Debug.Log("HIS_dayo2");
-            //ˆê’U‘SƒŒƒCƒ„[‚ğíœ
+            //ä¸€æ—¦å…¨ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’å‰Šé™¤
             for (int i = 0; i < controller.layers.Length; i++)
             {
                 controller.RemoveLayer(i);
@@ -69,14 +69,14 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
             for (int i = 0; i < targetMenu.groups.Count; i++)
             {
                 var group = targetMenu.groups[i];
-                //Œ»İ‚ÌƒIƒuƒWƒFƒNƒgƒOƒ‹[ƒv‚ğˆµ‚¤ƒŒƒCƒ„[
+                //ç¾åœ¨ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã‚’æ‰±ã†ãƒ¬ã‚¤ãƒ¤ãƒ¼
 
-                //ƒXƒe[ƒgƒ}ƒVƒ“‚Ìì¬
+                //ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ã®ä½œæˆ
                 AnimatorStateMachine stateMachine = new AnimatorStateMachine();
                 stateMachine.name = group.groupName;
-                //‚¢‚éH
+                //ã„ã‚‹ï¼Ÿ
                 //stateMachine.hideFlags = HideFlags.HideInHierarchy;
-                //ƒŒƒCƒ„[‚Ìì¬
+                //ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ä½œæˆ
                 AnimatorControllerLayer layer = new AnimatorControllerLayer
                 {
                     name = group.groupName,
@@ -88,7 +88,7 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
                 AssetDatabase.AddObjectToAsset(layer.stateMachine, controller);
                 EditorUtility.SetDirty(layer.stateMachine);
 
-                // ƒpƒ‰ƒ[ƒ^‚Ìì¬
+                // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ä½œæˆ
                 AnimatorControllerParameter onParameter = new AnimatorControllerParameter
                 {
                     name = GetParameterNameFromGroupName(group.groupName),
@@ -97,7 +97,7 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
                 };
                 controller.AddParameter(onParameter);
 
-                // ƒXƒe[ƒg‚Ìì¬
+                // ã‚¹ãƒ†ãƒ¼ãƒˆã®ä½œæˆ
                 AnimatorState defaultState = layer.stateMachine.AddState(group.groupName + "_Default");
                 defaultState.motion = CreateAnimationClip(group, true);
                 EditorUtility.SetDirty(defaultState);
@@ -106,7 +106,7 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
                 animatedState.motion = CreateAnimationClip(group, false);
                 EditorUtility.SetDirty(animatedState);
 
-                // ƒgƒ‰ƒ“ƒWƒVƒ‡ƒ“‚Ìì¬
+                // ãƒˆãƒ©ãƒ³ã‚¸ã‚·ãƒ§ãƒ³ã®ä½œæˆ
                 AnimatorStateTransition defToAnimTrans = defaultState.AddTransition(animatedState);
                 defToAnimTrans.AddCondition(AnimatorConditionMode.If, 0, onParameter.name);
                 defToAnimTrans.hasExitTime = false;
@@ -127,8 +127,8 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
-            //MA‚ÆExpressionMenu‚Ìİ’è
-            //V‹KƒIƒuƒWƒFƒNƒg‚ğƒAƒoƒ^[‚Ìq‚É’u‚«A‚»‚±‚ÉComponent‚ğ’Ç‰Á‚µ‚Ä‚¢‚­
+            //MAã¨ExpressionMenuã®è¨­å®š
+            //æ–°è¦ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¢ãƒã‚¿ãƒ¼ã®å­ã«ç½®ãã€ãã“ã«Componentã‚’è¿½åŠ ã—ã¦ã„ã
             GameObject targetObj = new GameObject($"{timeStamp}_HotaruInventrySystem");
             targetObj.transform.parent = targetMenu.targetAvatar.transform;
             var MAParam = targetObj.AddComponent<ModularAvatarParameters>();
@@ -138,7 +138,8 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
 
             rootExMenu.controls.Add(new VRCExpressionsMenu.Control()
             {
-                name = "HotaruInventrySystem",
+                name = targetMenu.menuName,
+                icon = targetMenu.menuIcon,
                 type = VRCExpressionsMenu.Control.ControlType.SubMenu,
                 parameter = new VRCExpressionsMenu.Control.Parameter(),
                 subMenu = subExMenu,
@@ -161,7 +162,7 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
                 {
                     nameOrPrefix = GetParameterNameFromGroupName(group.groupName),
                     syncType = ParameterSyncType.Bool,
-                    //‰Šú’l!
+                    //åˆæœŸå€¤!
                     defaultValue = 0,
                     saved = group.isSaved,
                     internalParameter = true,
@@ -178,14 +179,14 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
             AssetDatabase.Refresh();
 
 
-            //MergeAnimator‚Ìİ’è
+            //MergeAnimatorã®è¨­å®š
             var MAMergeAnim = targetObj.AddComponent<ModularAvatarMergeAnimator>();
             MAMergeAnim.animator = controller;
             MAMergeAnim.layerType = VRCAvatarDescriptor.AnimLayerType.FX;
             MAMergeAnim.pathMode = MergeAnimatorPathMode.Absolute;
             MAMergeAnim.matchAvatarWriteDefaults = false;
 
-            //MenuInstaller‚Ìİ’è
+            //MenuInstallerã®è¨­å®š
             var MAMenuInst = targetObj.AddComponent<ModularAvatarMenuInstaller>();
             MAMenuInst.menuToAppend = rootExMenu;
 
@@ -200,7 +201,7 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
                 AnimationClip clip = new AnimationClip();
                 clip.name = $"{group.groupName}_{(isDefault ? "Default" : "Animated")}";
 
-                //ƒOƒ‹[ƒv“à‚ÌŠeƒIƒuƒWƒFƒNƒg‚É‘Î‚µ‚ÄAƒL[ƒtƒŒ[ƒ€‚ğì¬‚µA1‚Â‚ÌƒNƒŠƒbƒv‚É‚·‚é
+                //ã‚°ãƒ«ãƒ¼ãƒ—å†…ã®å„ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¯¾ã—ã¦ã€ã‚­ãƒ¼ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’ä½œæˆã—ã€1ã¤ã®ã‚¯ãƒªãƒƒãƒ—ã«ã™ã‚‹
                 for (int i = 0; i < group.objects.Count; i++)
                 {
                     GameObject obj = group.objects[i];
@@ -224,7 +225,7 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
             {
                 Directory.Delete(assetsPath, true);
                 AssetDatabase.Refresh();
-                Debug.Log("HIS_ƒtƒHƒ‹ƒ_íœ");
+                Debug.Log("HIS_ãƒ•ã‚©ãƒ«ãƒ€å‰Šé™¤");
             }
         }
 
@@ -251,7 +252,7 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
     [InitializeOnLoad]
     public class ProcessEndHandler : IPostprocessBuildWithReport
     {
-        // ƒrƒ‹ƒhI—¹‚Ì—Dæ“x
+        // ãƒ“ãƒ«ãƒ‰çµ‚äº†æ™‚ã®å„ªå…ˆåº¦
         public int callbackOrder => 10;
 
         static ProcessEndHandler()
@@ -263,15 +264,15 @@ namespace hotarunohikari.HotaruInventrySystem.Editor
         {
             if (state == PlayModeStateChange.EnteredEditMode)
             {
-                // Playƒ‚[ƒhI—¹Œã‚Éˆ—
+                // Playãƒ¢ãƒ¼ãƒ‰çµ‚äº†å¾Œã«å‡¦ç†
                 HotaruInventrySystemPlugin.DeleteTmpAssets();
             }
         }
 
-        //“®ì‚µ‚Ä‚¢‚È‚¢
+        //å‹•ä½œã—ã¦ã„ãªã„
         public void OnPostprocessBuild(BuildReport report)
         {
-            // ƒrƒ‹ƒhI—¹Œã‚Ìˆ—Œã‚Éˆ—
+            // ãƒ“ãƒ«ãƒ‰çµ‚äº†å¾Œã®å‡¦ç†å¾Œã«å‡¦ç†
             HotaruInventrySystemPlugin.DeleteTmpAssets();
         }
     }
